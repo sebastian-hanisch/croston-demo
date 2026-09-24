@@ -1,5 +1,7 @@
 # 🐌 Croston, SBA und TSB – Prognosen bei sporadischer Nachfrage
 
+**[→ Demo live ausprobieren](https://sebastianhanisch-croston-demo.streamlit.app/)**
+
 Fünftes Stück der **Zeitreihen-Prognose-Linie** der "Konzepte"-Reihe im Portfolio von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning. Der Ast für **sporadische Nachfrage**: Nachfolger der [Exponentiellen Glättung](https://github.com/sebastian-hanisch/exponential-smoothing-demo), deren Schwäche – viele Nullen – er aufgreift.
 Geplant sind sechs weitere Stücke (Boosting, Prognoseintervalle, Hierarchische Abstimmung, Kombination, Prognose → Bestand, ein vortrainiertes Netz; noch nicht gebaut).
 
