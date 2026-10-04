@@ -20,7 +20,7 @@ def test_occurrence_rate_and_mean_size_follow_the_parameters():
     assert np.abs(share - port.p).mean() < 0.02
     nz = np.where(port.y > 0, port.y, np.nan)
     assert np.nanmean(np.nanmean(nz, axis=1) / port.m) == pytest.approx(1.0, abs=0.05)
-    assert port.mu == pytest.approx(port.p[:, None] * port.m[:, None] * np.ones((1, C.N_DAYS)))
+    assert port.mu == pytest.approx(port.p[:, None] * port.m[:, None] * np.ones((1, C.N_DAYS)), rel=0.01)                  # E[Menge] liegt wegen Rundung und Mindestmaß 1 knapp über m (hier unter 1 %; exakt: tests/test_oracle_croston.py)
 
 
 def test_drift_changes_the_expected_rate_and_zero_drift_keeps_it_constant():

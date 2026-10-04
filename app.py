@@ -246,7 +246,7 @@ with st.expander("📐 Mathematische Formulierung"):
     st.markdown(
         r"""
 **Vehikel.** Artikel $i$, Tag $t$: Bedarf mit Wahrscheinlichkeit $p_i(t) = p_i\,e^{W_i(t)}\,\delta_i(t)$ ($W$ eine Irrfahrt mit Schritt $\sigma_d$, $\delta$ das Auslaufen: $e^{-(t - t_0)/60}$ nach dem Tag $t_0$ bei auslaufenden Artikeln), Menge $\max(1, \mathrm{round}(m_i\,e^{\sigma z - \sigma^2/2}))$ mit $\sigma^2 = \ln(1 + \mathrm{CV}^2)$.
-Erwartung je Tag: $\mu_i(t) \approx p_i(t)\,m_i$.
+Erwartung je Tag: $\mu_i(t) = p_i(t)\,\mathbb{E}[\mathrm{Menge}_i]$ - die Rundung und das Mindestmaß 1 heben den Erwartungswert der Menge etwas über $m_i$ (bei Mittel 5 und CV 0,6 unter 0,1 %, bei Mittel 1 und CV 1,5 um 40 %); er wird exakt ausgerechnet.
 
 **Verfahren** (Rate $\hat r_t$ aus den Tagen $< t$): einfache Glättung $\ell_t = \ell_{t-1} + \alpha\,(y_{t-1} - \ell_{t-1})$. Croston: an Bedarfstagen $z \leftarrow z + \alpha\,(y - z)$ und $p \leftarrow p + \alpha\,(q - p)$ ($q$ = Tage seit dem letzten Bedarf einschließlich dieses Tages), sonst unverändert; $\hat r = z/p$.
 SBA: $\hat r = (1 - \alpha/2)\,z/p$. TSB: in jedem Tag $d \leftarrow d + \beta\,(\mathbb 1[y > 0] - d)$, an Bedarfstagen $z \leftarrow z + \alpha\,(y - z)$; $\hat r = d\,z$. Anfangswerte aus den ersten 180 Tagen ($z$ = mittlere Menge, $p$ = mittlerer Abstand, $d = 1/p$, $\ell$ = Tagesmittel).
