@@ -3,7 +3,7 @@
 **[→ Demo live ausprobieren](https://sebastianhanisch-croston-demo.streamlit.app/)**
 
 Fünftes Stück der **Zeitreihen-Prognose-Linie** der "Konzepte"-Reihe im Portfolio von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning. Der Ast für **sporadische Nachfrage**: Nachfolger der [Exponentiellen Glättung](https://github.com/sebastian-hanisch/exponential-smoothing-demo), deren Schwäche – viele Nullen – er aufgreift.
-Geplant sind sechs weitere Stücke (Boosting, Prognoseintervalle, Hierarchische Abstimmung, Kombination, Prognose → Bestand, ein vortrainiertes Netz; noch nicht gebaut).
+Die sechs weiteren Stücke der Linie (Boosting, Prognoseintervalle, Hierarchische Abstimmung, Kombination, Prognose → Bestand, ein vortrainiertes Netz) sind inzwischen gebaut.
 
 Ein Ersatzteil, ein Spezialartikel, ein Nachzügler im Sortiment: **an den meisten Tagen wird nichts bestellt**, und wenn, dann in Klumpen. Die Demo zeigt an einem **Portfolio von Lagerartikeln eines Depots** (ein neues Vehikel: bisher ging es um tägliche Aufträge), was Prognoseverfahren dafür leisten: die einfache Glättung, **Croston** (Menge und Abstand getrennt glätten), **SBA** (Crostons Verzerrung korrigiert)
 und **TSB** (die Bedarfswahrscheinlichkeit in jedem Tag fortschreiben). Geprüft wird die **Nachfrage in der Wiederbeschaffungszeit** – die Größe, aus der Bestellpunkte und Sicherheitsbestände entstehen –, gegen ein **Orakel** mit der wahren Rate. Alle Daten sind erzeugt, die Rechnung ist in numpy geschrieben.
@@ -59,10 +59,10 @@ Die Preset-Zeilen sind **Einzelportfolios** (Seed 3); belastbar sind die Zeilen 
 
 | Annahme | Was passiert, wenn sie verletzt ist | Wer setzt an |
 |---|---|---|
-| **Nur die Rate zählt** | Alle Verfahren liefern eine einzige Zahl je Tag; die Verteilung der Nachfrage in der Wiederbeschaffungszeit (für Sicherheitsbestände) kennen sie nicht. | Prognoseintervalle, Bestandsrechnung (geplant) |
+| **Nur die Rate zählt** | Alle Verfahren liefern eine einzige Zahl je Tag; die Verteilung der Nachfrage in der Wiederbeschaffungszeit (für Sicherheitsbestände) kennen sie nicht. | Prognoseintervalle, Bestandsrechnung (beide gebaut) |
 | **Kein Kalender, keine Aktionen** | Ein Artikel mit Aktionen oder Saison bekommt eine glatte Rate; das Muster bleibt im Fehler. | Dynamische Regression, Boosting |
-| **Jeder Artikel für sich** | Wenige Bedarfe je Artikel machen jede Schätzung unsicher; ähnliche Artikel teilen ihr Wissen nicht. | Hierarchische Abstimmung (geplant), globale Modelle |
-| **Die Kennzahl passt zum Zweck** | Der MAE prämiert die Null-Prognose; der RMSE misst die Prognose der Rate, nicht die Kosten von Fehl- und Überbeständen. | Bestandskosten (geplant) |
+| **Jeder Artikel für sich** | Wenige Bedarfe je Artikel machen jede Schätzung unsicher; ähnliche Artikel teilen ihr Wissen nicht. | Hierarchische Abstimmung (gebaut), globale Modelle |
+| **Die Kennzahl passt zum Zweck** | Der MAE prämiert die Null-Prognose; der RMSE misst die Prognose der Rate, nicht die Kosten von Fehl- und Überbeständen. | Bestandskosten (gebaut) |
 | **Feste Parameter aus den Trainingstagen** | α und Anfangswerte stammen aus zwei Jahren und werden nicht nachgeführt. | – |
 | **Erzeugte Portfolios, sechs Seeds** | Das Vehikel erzeugt genau die Muster (Bernoulli-Bedarf, log-normale Mengen, Drift, Auslaufen); echte Artikel sind unordentlicher. Die Zahlen gelten für diese Portfolios. | – |
 
@@ -100,3 +100,7 @@ streamlit run app.py
 ```
 
 Gebaut mit Streamlit, Plotly und numpy (Gegenprobe im Test: statsmodels).
+
+---
+
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Zeitreihen-Prognose: von Naiv bis Vortraining](https://sebastianhanisch.net/konzepte-zeitreihen-prognose.html).

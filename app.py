@@ -238,7 +238,7 @@ st.markdown(
 | **Erzeugte Portfolios, sechs Seeds** | Das Vehikel erzeugt genau die Muster (Bernoulli-Bedarf, log-normale Mengen, Drift, Auslaufen); echte Artikel sind unordentlicher. Die Zahlen gelten für diese Portfolios. | – |
 """
 )
-st.caption("Die Linie: Naive Prognose → Exponentielle Glättung → ARIMA → Dynamische Regression, dazu **Croston, SBA, TSB**, Boosting, Prognoseintervalle, Hierarchie, Kombination, Bestand und ein vortrainiertes Netz (die übrigen Stücke noch nicht gebaut).")
+st.caption("Die Linie: Naive Prognose → Exponentielle Glättung → ARIMA → Dynamische Regression, dazu **Croston, SBA, TSB**, Boosting, Prognoseintervalle, Hierarchie, Kombination, Bestand und ein vortrainiertes Netz (alle Stücke der Linie sind inzwischen gebaut).")
 
 st.markdown("---")
 
@@ -262,6 +262,6 @@ Implementiert in `cr_methods.py` (Verfahren), `cr_scenario.py` (das Portfolio), 
 st.markdown("---")
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Zeitreihen-Prognose: von Naiv bis Vortraining](https://sebastianhanisch.net/konzepte-zeitreihen-prognose.html)."
 )
