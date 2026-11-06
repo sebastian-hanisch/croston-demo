@@ -58,6 +58,17 @@ und die drei Klassiker für sporadische Nachfrage - **Croston** (Menge und Absta
 Sicherheitsbestände entstehen. Und es geht um eine Frage, die vor dem Verfahren kommt: **woran misst man überhaupt?**
 """
 )
+
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/croston-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Manche Artikel werden an den meisten Tagen gar nicht gekauft, und wenn, dann gleich mehrere Stück. Eine gewöhnliche Glättung sagt das schlecht voraus: Nach jedem Kauf springt ihre Schätzung hoch und fällt an den leeren Tagen wieder. Die Demo vergleicht vier Wege. Die einfache Glättung schreibt eine Tagesrate fort. Croston glättet die Größe eines Kaufs und den Abstand zwischen zwei Käufen getrennt. SBA korrigiert, dass Croston im Mittel zu viel schätzt. TSB schreibt die Wahrscheinlichkeit eines Kauftags jeden Tag fort. Geprüft wird die Nachfrage in der Wiederbeschaffungszeit, gegen eine Prognose, die den wahren Durchschnitt kennt. Alle Artikel sind erzeugt. Die Demo zeigt auch, dass die Wahl des Fehlermaßes das Urteil umkehren kann.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/croston-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
 st.caption(
     "Fünftes Stück der **Zeitreihen-Prognose-Linie** der \"Konzepte\"-Reihe (Ast für sporadische Nachfrage; Nachfolger der Exponentiellen Glättung, deren Schwäche - Nullen - es aufgreift); alle Daten sind erzeugt, die Rechnung ist in numpy geschrieben. "
     "**Bezug zu OR:** die Prognose der Nachfrage in der Wiederbeschaffungszeit ist der Eingang jeder Bestandsrechnung; das Bestands-Stück der Linie nimmt sie auf."
@@ -243,6 +254,29 @@ st.caption("Die Linie: Naive Prognose → Exponentielle Glättung → ARIMA → 
 st.markdown("---")
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/croston-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben ist die tägliche Nachfrage $y$ eines Artikels (an den meisten Tagen null) und die Wiederbeschaffungszeit $h$ in Tagen. Gesucht ist eine Tagesrate $\hat r$, aus der die Prognose $h\,\hat r$ für die Nachfrage der nächsten $h$ Tage folgt.
+
+| Symbol | Bedeutung |
+|---|---|
+| $y$ | Nachfrage (Stückzahl) an einem Tag, meist null |
+| $h$ | Wiederbeschaffungszeit in Tagen |
+| $\hat r$ | Rate: erwartete Nachfrage je Tag, die ein Verfahren aus den Tagen vor $t$ bildet |
+| $\alpha$, $\beta$ | Glättungsparameter: Gewicht des neuesten Wertes (bei TSB ist $\beta = \alpha$) |
+| $\ell$ | Niveau der einfachen Glättung |
+| $z$ | geglättete Menge eines Bedarfstags (Croston, SBA, TSB) |
+| $p$ | geglätteter Abstand zwischen zwei Bedarfstagen in Tagen (Croston, SBA); in der Zeile zum Portfolio steht $p_i(t)$ dagegen für die Bedarfswahrscheinlichkeit |
+| $q$ | Tage seit dem letzten Bedarf, einschließlich des aktuellen Tages |
+| $d$ | geglättete Wahrscheinlichkeit eines Bedarfstags (TSB) |
+| $\hat S_t$, $S_t$ | Prognose bzw. tatsächliche Nachfrage in der Wiederbeschaffungszeit ab Tag $t$ |
+| $s_i$ | Skala des Artikels $i$ im RMSSE: Fehler der Prognose „die vorige Wiederbeschaffungszeit wiederholt sich“ auf den Trainingstagen |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/croston-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown(
         r"""
 **Vehikel.** Artikel $i$, Tag $t$: Bedarf mit Wahrscheinlichkeit $p_i(t) = p_i\,e^{W_i(t)}\,\delta_i(t)$ ($W$ eine Irrfahrt mit Schritt $\sigma_d$, $\delta$ das Auslaufen: $e^{-(t - t_0)/60}$ nach dem Tag $t_0$ bei auslaufenden Artikeln), Menge $\max(1, \mathrm{round}(m_i\,e^{\sigma z - \sigma^2/2}))$ mit $\sigma^2 = \ln(1 + \mathrm{CV}^2)$.
