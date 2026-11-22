@@ -112,11 +112,11 @@ def randomize_seed():
 
 
 PRESET_HELP = {
-    "Standardfall: 200 Artikel, p = 0,15": "Seed 3, 200 Artikel, 78 % Nulltage im Testjahr, Wiederbeschaffungszeit 7 Tage: RMSSE TSB (α gewählt) 0,756, SBA (α = 0,1) 0,770, Croston 0,773, Mittel der Historie 0,791, einfache Glättung 0,856, naiv 2,04, Null 1,24; Orakel 0,733. "
+    "Standardfall: 200 Artikel, p = 0,15": "Zufalls-Seed 3, 200 Artikel, 78 % Nulltage im Testjahr, Wiederbeschaffungszeit 7 Tage: RMSSE TSB (α gewählt) 0,756, SBA (α = 0,1) 0,770, Croston 0,773, Mittel der Historie 0,791, einfache Glättung 0,856, naiv 2,04, Null 1,24; Orakel 0,733. "
                                            "Verzerrung: Croston +2,8 %, SBA −2,3 %.",
-    "Sehr sporadisch (p = 0,03)": "Seed 3, 95 % Nulltage: nach RMSSE liegen Croston und SBA (0,793) vor der einfachen Glättung (0,907); nach dem MAE dagegen gewinnt die Null-Prognose (1,85 Stück gegen 2,23 beim Orakel) - die falsche Kennzahl.",
-    "Klumpige Mengen (CV 1,5)": "Seed 3: RMSSE Croston 0,879, SBA 0,875, einfache Glättung 0,982, TSB (α gewählt) 0,852; Orakel 0,839. Klumpige Mengen heben das Niveau aller Fehler, ändern die Rangfolge aber kaum.",
-    "Auslaufende Artikel (30 %)": "Seed 3, 64 auslaufende Artikel: Croston überschätzt um +16,5 %, SBA um +10,7 %, einfache Glättung (+0,7 %) und TSB (+0,5 %) nicht; RMSSE TSB (α gewählt) 0,662, einfache Glättung 0,740, SBA 0,688, Croston 0,694.",
-    "Grobes α = 0,3": "Seed 3, α = 0,3: die einfache Glättung fällt auf RMSSE 1,085, TSB auf 1,026, Croston auf 0,859 (Verzerrung +10,4 %), SBA auf 0,827; mit je Artikel gewähltem α sind es wieder 0,756 bis 0,764.",
-    "Wiederbeschaffungszeit 1 Tag": "Seed 3, ein Tag: die Null-Prognose hat den kleinsten MAE (1,21 Stück gegen 1,54 beim Orakel), aber einen RMSSE von 0,81 gegen 0,717 beim Orakel und 100 % Verzerrung nach unten.",
+    "Sehr sporadisch (p = 0,03)": "Zufalls-Seed 3, 95 % Nulltage: nach RMSSE liegen Croston und SBA (0,793) vor der einfachen Glättung (0,907); nach dem MAE dagegen gewinnt die Null-Prognose (1,85 Stück gegen 2,23 beim Orakel) - die falsche Kennzahl.",
+    "Klumpige Mengen (CV 1,5)": "Zufalls-Seed 3: RMSSE Croston 0,879, SBA 0,875, einfache Glättung 0,982, TSB (α gewählt) 0,852; Orakel 0,839. Klumpige Mengen heben das Niveau aller Fehler, ändern die Rangfolge aber kaum.",
+    "Auslaufende Artikel (30 %)": "Zufalls-Seed 3, 64 auslaufende Artikel: Croston überschätzt um +16,5 %, SBA um +10,7 %, einfache Glättung (+0,7 %) und TSB (+0,5 %) nicht; RMSSE TSB (α gewählt) 0,662, einfache Glättung 0,740, SBA 0,688, Croston 0,694.",
+    "Grobes α = 0,3": "Zufalls-Seed 3, α = 0,3: die einfache Glättung fällt auf RMSSE 1,085, TSB auf 1,026, Croston auf 0,859 (Verzerrung +10,4 %), SBA auf 0,827; mit je Artikel gewähltem α sind es wieder 0,756 bis 0,764.",
+    "Wiederbeschaffungszeit 1 Tag": "Zufalls-Seed 3, ein Tag: die Null-Prognose hat den kleinsten MAE (1,21 Stück gegen 1,54 beim Orakel), aber einen RMSSE von 0,81 gegen 0,717 beim Orakel und 100 % Verzerrung nach unten.",
 }

@@ -168,7 +168,7 @@ st.markdown("---")
 # --- Experimente ------------------------------------------------------------------------------------------------------------------------------
 
 st.subheader("🔬 Woran misst man sporadische Nachfrage?")
-st.caption(f"Standardportfolio; Wiederbeschaffungszeit {', '.join(str(x) for x in C.METRIC_HORIZONS)} Tage; MAE und RMSE jedes Verfahrens im Verhältnis zum Orakel. Mittel über {len(C.EXP_SEEDS)} feste Seeds. Dauer wenige Sekunden.")
+st.caption(f"Standardportfolio; Wiederbeschaffungszeit {', '.join(str(x) for x in C.METRIC_HORIZONS)} Tage; MAE und RMSE jedes Verfahrens im Verhältnis zum Orakel. Mittel über {len(C.EXP_SEEDS)} feste Zufalls-Seeds. Dauer wenige Sekunden.")
 if st.button("Kennzahlen durchrechnen", key="metric_start"):
     st.session_state["metric_on"] = True
 if st.session_state.get("metric_on"):
@@ -185,7 +185,7 @@ if st.session_state.get("metric_on"):
 st.markdown("---")
 
 st.subheader("🔬 Wie verzerrt ist Croston?")
-st.caption(f"Stabile Nachfrage (Drift 0); Bedarfshäufigkeit {', '.join(de(x, 2) for x in C.BIAS_P)}, α {', '.join(de(x, 2) for x in C.BIAS_ALPHAS)}; Verzerrung = mittlerer Fehler in Prozent der mittleren Nachfrage. Mittel über {len(C.EXP_SEEDS)} feste Seeds. Dauer einige Sekunden.")
+st.caption(f"Stabile Nachfrage (Drift 0); Bedarfshäufigkeit {', '.join(de(x, 2) for x in C.BIAS_P)}, α {', '.join(de(x, 2) for x in C.BIAS_ALPHAS)}; Verzerrung = mittlerer Fehler in Prozent der mittleren Nachfrage. Mittel über {len(C.EXP_SEEDS)} feste Zufalls-Seeds. Dauer einige Sekunden.")
 if st.button("Verzerrung durchrechnen", key="bias_start"):
     st.session_state["bias_on"] = True
 if st.session_state.get("bias_on"):
@@ -201,7 +201,7 @@ if st.session_state.get("bias_on"):
 st.markdown("---")
 
 st.subheader("🔬 Croston gegen einfache Glättung - bei welchem α?")
-st.caption(f"Standardportfolio (mit Drift); RMSSE bei festem α {', '.join(de(x, 2) for x in C.ALPHA_LEVELS)} und mit je Artikel gewähltem α (gestrichelt). Mittel über {len(C.EXP_SEEDS)} feste Seeds. Dauer einige Sekunden.")
+st.caption(f"Standardportfolio (mit Drift); RMSSE bei festem α {', '.join(de(x, 2) for x in C.ALPHA_LEVELS)} und mit je Artikel gewähltem α (gestrichelt). Mittel über {len(C.EXP_SEEDS)} feste Zufalls-Seeds. Dauer einige Sekunden.")
 if st.button("α durchrechnen", key="alpha_start"):
     st.session_state["alpha_on"] = True
 if st.session_state.get("alpha_on"):
@@ -219,7 +219,7 @@ if st.session_state.get("alpha_on"):
 st.markdown("---")
 
 st.subheader("🔬 Was passiert, wenn ein Artikel ausläuft?")
-st.caption(f"Portfolio mit {pct(C.OBS_EXP_SHARE)} auslaufenden Artikeln (stabile Nachfrage sonst), α = 0,10; RMSE (Stück) getrennt für auslaufende und aktive Artikel. Mittel über {len(C.EXP_SEEDS)} feste Seeds. Dauer wenige Sekunden.")
+st.caption(f"Portfolio mit {pct(C.OBS_EXP_SHARE)} auslaufenden Artikeln (stabile Nachfrage sonst), α = 0,10; RMSE (Stück) getrennt für auslaufende und aktive Artikel. Mittel über {len(C.EXP_SEEDS)} feste Zufalls-Seeds. Dauer wenige Sekunden.")
 if st.button("Auslaufen durchrechnen", key="obs_start"):
     st.session_state["obs_on"] = True
 if st.session_state.get("obs_on"):
@@ -246,7 +246,7 @@ st.markdown(
 | **Jeder Artikel für sich** | Wenige Bedarfe je Artikel machen jede Schätzung unsicher; ähnliche Artikel teilen ihr Wissen nicht. | Hierarchische Abstimmung (Stück 8), globale Modelle |
 | **Die Kennzahl passt zum Zweck** | Der MAE prämiert die Null-Prognose; der RMSE misst die Prognose der Rate, nicht die Kosten von Fehlbeständen und Überbeständen. | Bestandskosten (Stück 10) |
 | **Feste Parameter aus den Trainingstagen** | α und Anfangswerte stammen aus zwei Jahren und werden nicht nachgeführt. | – |
-| **Erzeugte Portfolios, sechs Seeds** | Das Vehikel erzeugt genau die Muster (Bernoulli-Bedarf, log-normale Mengen, Drift, Auslaufen); echte Artikel sind unordentlicher. Die Zahlen gelten für diese Portfolios. | – |
+| **Erzeugte Portfolios, sechs Zufalls-Seeds** | Das Vehikel erzeugt genau die Muster (Bernoulli-Bedarf, log-normale Mengen, Drift, Auslaufen); echte Artikel sind unordentlicher. Die Zahlen gelten für diese Portfolios. | – |
 """
 )
 st.caption("Die Linie: Naive Prognose → Exponentielle Glättung → ARIMA → Dynamische Regression, dazu **Croston, SBA, TSB**, Boosting, Prognoseintervalle, Hierarchie, Kombination, Bestand und ein vortrainiertes Netz (alle Stücke der Linie sind inzwischen gebaut).")
